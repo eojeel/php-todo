@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - todo@127.0.0.1" uuid="a45ed9d9-c5e8-49d9-a942-c23d45f2769c">
+    <database-info product="MySQL" version="5.5.42" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+      <schema id="1" name="todo">
+        <visible>1</visible>
+      </schema>
+      <schema id="2" name="information_schema"/>
+      <schema id="3" name="mysql"/>
+      <schema id="4" name="performance_schema"/>
+      <table id="5" parent="1" name="users"/>
+      <column id="6" parent="5" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned|0</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="7" parent="5" name="username">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="8" parent="5" name="password">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="9" parent="5" name="ip_address">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="10" parent="5" name="time">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <column id="11" parent="5" name="date">
+        <data-type>varchar(40)|0</data-type>
+      </column>
+      <column id="12" parent="5" name="user_status">
+        <data-type>varchar(20)|0</data-type>
+      </column>
+      <key id="13" parent="5" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+    </database-model>
+  </data-source>
+</component>
