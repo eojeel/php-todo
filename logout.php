@@ -2,13 +2,7 @@
 session_start();
 if(isset($_SESSION['todo_name']))
 {
-    $session_name = $_SESSION['todo_name'];
-}
-else
-{
+    session_destroy();
     header("location: login.php");
 }
-
-
-
 ?>

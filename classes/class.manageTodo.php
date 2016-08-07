@@ -12,15 +12,21 @@ class ManageTodo
     {
         $db_connection = new dbConnection();
         $this->link = $db_connection->connect();
+        /* line below sets ever showing */
+        $this->link->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING );
         return $this->link;
     }
 
-    function createTodo($username, $title, $description, $due_date,$created_on,$label)
+    function createTodo($username,$title,$description,$due_date,$created_on,$label)
     {
-       $query = $this->link->prepare("INSERT INTO todo (username,title,description,due_date,create_date,status)VALUES (?,?,?,?,?,?)");
-
-        $values = array($username, $title, $description, $due_date,$created_on,$label);
+        // echo '<br>'. $username,' '. $title,' '. $description,' '. $due_date,' '. $created_on,' '. $label;
+        // try {
+        $query = $this->link->prepare("INSERT INTO todo (username,title,description,due_date,created_on,label)VALUES (?,?,?,?,?,?)");
+        $values = array($username, $title, $description, $due_date, $created_on, $label);
         $query->execute($values);
+        // }catch(PDOException $e) {
+        // echo "error " + $e;
+        // }
         $counts = $query->rowCount();
         return $counts;
     }
@@ -34,11 +40,11 @@ class ManageTodo
     {
         if(isset($status))
         {
-            $query = $this->link->query("SELECT * FROM todo WHERE username = '$username' AND status = '$status'");
+            $query = $this->link->query("SELECT * FROM todo WHERE username = '$username' AND label = '$status' ORDER BY id DESC");
         }
         else
         {
-            $query = $this->link->query("SELECT * FROM todo WHERE username = '$username'");
+            $query = $this->link->query("SELECT * FROM todo WHERE username = '$username' ORDER BY id DESC");
         }
         $counts = $query->rowCount();
         if($counts >= 1)
@@ -73,16 +79,14 @@ class ManageTodo
      * @param $values
      * @return int
      */
-    function editTodo($username, $id, $values)
+    function editTodo($username, $id, $title, $description, $progress,$due_date, $label)
     {
-        $x=0;
-        foreach ($values as $key -> $value)
-        {
-            $query = $this->link->query("UPDATE todo SET $key = '$value' WHERE username = '$username' AND id ='$id'");
-            $x++;
-        }
-        return $x;
+        $query = $this->link->query("UPDATE todo SET title = '$title',description = '$description', progress = '$progress', due_date ='$due_date', label = '$label', WHERE username = '$username' AND id ='$id'");
+
+        $counts = $query->rowCount();
+        return $counts;
     }
+
 
     /**
      * @param $username
@@ -96,6 +100,28 @@ class ManageTodo
         return $counts;
     }
 
+    /**
+     * @param $param
+     * @param $username
+     * @return array|int
+     */
+    function listindTodo($param, $username)
+    {
+        foreach($param as $key => $value)
+        {
+            $query = $this->link->query("SELECT * FROM todo WHERE $key = '$value' AND username = '$username' LIMIT 1");
+        }
+        $counts = $query->rowCount();
+        if($counts == 1)
+        {
+            $result = $query ->fetchAll();
+        }
+        else
+        {
+            $result = $counts;
+        }
+        return $result;
+    }
 }
 
 ?>

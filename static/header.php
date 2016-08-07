@@ -17,9 +17,10 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <ul class="nav nav-list">
-                        <li><a href="">Inbox</a></li>
-                        <li><a href="">Read Later</a></li>
-                        <li><a href="">Important</a></li>
+                        <li><a href="index.php?label=inbox">Inbox</a></li>
+                        <li><a href="index.php?label=read later">Read Later</a></li>
+                        <li><a href="index.php?label=important">Important</a></li>
+                        <li><a href="logout.php">Logout</a></li>
                     </ul>
         </div>
         <!-- /#sidebar-wrapper -->

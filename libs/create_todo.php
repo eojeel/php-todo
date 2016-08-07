@@ -1,5 +1,6 @@
 <?php
 include_once ('/Users/joelee/PhpstormProjects/todoo/classes/class.manageTodo.php');
+include_once ('session.php');
 $init = new ManageTodo();
 
 if(isset($_POST['create_todo']))
@@ -18,13 +19,11 @@ if(isset($_POST['create_todo']))
     {
         $title = strip_tags($title);
         $description = strip_tags($description);
-        $title = mysqli_real_escape_string($init->link, $title);
-        $description = mysqli_real_escape_string($init->link, $description);
 
         $username = 'joe';
         $created_on = date('Y-m-d');
 
-        $init->createTodo($username,$title,$description,$due_date,$created_on,$label);
+        $create_todo = $init->createTodo($username,$title,$description,$due_date,$created_on,$label);
         if ($create_todo == 1)
         {
             $success = 'Todo Created Sucessfully';

@@ -1,9 +1,10 @@
 <?php
 
+include_once ('/Users/joelee/PhpstormProjects/todoo/classes/class.Manageusers.php');
+
 if(isset($_POST['register']))
 {
     session_start();
-    include_once ('classes/class.Manageusers.php');
     $users = new ManageUsers();
 
     $username = $_POST['username'];
@@ -59,7 +60,6 @@ if(isset($_POST['register']))
 if(isset($_POST['login']))
 {
     session_start();
-    include_once ('classes/class.Manageusers.php');
     $username = $_POST['login_username'];
     $password = $_POST['login_password'];
 
