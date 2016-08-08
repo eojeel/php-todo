@@ -35,4 +35,4 @@
                             <a href="index.php" class="btn btn-success">Home</a>
                             <a href="add_new.php" class="btn btn-success">Add New</a>
                             <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                        </div>
+                       </div>

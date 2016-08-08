@@ -1,7 +1,7 @@
 <?php
 
 
-// creative class with db connection and defined
+// Create class with db connection and defined
 class dbConnection {
         protected $db_conn;
         public $db_name = 'todo';

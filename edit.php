@@ -1,9 +1,9 @@
 <?php
-include_once ('static/header.php');
-include_once ('libs/list_todo.php');
-include_once ('libs/edit.php');
-?>
-<div class="container-fluid">
+    include_once ('static/header.php');
+    include_once ('libs/list_todo.php');
+    include_once ('libs/edit.php');
+    ?>
+    <div class="container-fluid">
     <h2> Create ToDo</h2>
 
     <?php if(isset($error)){ echo '<div class="alert alert-danger" role="alert">'.$error.'</div>';} ?>
@@ -16,7 +16,7 @@ include_once ('libs/edit.php');
         $array_remaining = array_diff($given_array,$selected_array);
         ?>
 
-    <form method="post" action="edit.php">
+    <form method="post" action="edit.php?id=<?=$td['id']?>">
         <div class="form-group">
             <label>Title</label>
             <input type="text" class="form-control" name="title" value="<?=$td['title'];?>">
@@ -68,7 +68,7 @@ include_once ('libs/edit.php');
                 $( "#progress_value" ).val( ui.value );
             }
         });
-        //$( "#progress_value" ).val( $( "#seekbar" ).slider( "value" ) );
+        $( "#progress_value" ).val( $( "#seekbar" ).slider( "value" ) );
     } );
 </script>
 

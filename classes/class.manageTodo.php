@@ -81,8 +81,8 @@ class ManageTodo
      */
     function editTodo($username, $id, $title, $description, $progress,$due_date, $label)
     {
-        $query = $this->link->query("UPDATE todo SET title = '$title',description = '$description', progress = '$progress', due_date ='$due_date', label = '$label', WHERE username = '$username' AND id ='$id'");
-
+        $query = $this->link->prepare("UPDATE todo SET title = '$title',description = '$description', progress = '$progress', due_date ='$due_date', label = '$label' WHERE username = '$username' AND id ='$id'");
+        $query->execute();
         $counts = $query->rowCount();
         return $counts;
     }
